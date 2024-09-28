@@ -1,5 +1,18 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #fffffe;
+}
+
+.headline{
+  color: #272343;
+}
+
+.button{
+  color: #272343;
+  background-color: #ffd803;
 }
