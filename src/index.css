@@ -2,17 +2,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 body {
   background-color: #fffffe;
 }
 
-.headline{
+.headline {
   color: #272343;
 }
 
-.button{
+.button {
   color: #272343;
   background-color: #ffd803;
 }
+
+/* Nav link */
+.nav-link {
+  transition: opacity ease 0.25s;
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+}
+
