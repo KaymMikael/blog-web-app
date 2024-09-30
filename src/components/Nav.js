@@ -6,9 +6,9 @@ const Nav = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary container-lg fw-bold">
       <div className="container-fluid">
         <Link className="navbar-brand" to={"/"}>
-          Blog Web App
+          PostWave
         </Link>
-        <button
+        {/* <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -27,11 +27,8 @@ const Nav = () => {
             <Link className="nav-link headline" to={"/about"}>
               About
             </Link>
-            <Link className="nav-link headline button rounded" to={"/login"}>
-              Login
-            </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
