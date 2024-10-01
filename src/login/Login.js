@@ -40,7 +40,7 @@ const LogIn = () => {
               type="submit"
               data-mdb-button-init
               data-mdb-ripple-init
-              className="btn btn-primary btn-block mb-4"
+              className="button mb-4 w-100 rounded"
             >
               Sign in
             </button>
