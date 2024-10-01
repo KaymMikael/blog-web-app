@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-const LogIn = () => {
+const SignIn = () => {
   return (
     <section className="login">
       <div className="tab-content">
@@ -12,8 +11,8 @@ const LogIn = () => {
           aria-labelledby="tab-login"
         >
           <form>
-            <h2 className="text-start">Log In</h2>
-            <div data-mdb-input-init className="form-outline mb-4">
+            <h2 className="text-start headline">Sign In</h2>
+            <div className="form-outline mb-4">
               <label className="form-label" htmlFor="loginName">
                 Email
               </label>
@@ -23,8 +22,10 @@ const LogIn = () => {
                 className="form-control"
                 required
               />
+              {/* error Message */}
+              <p className="form-message mt-1"></p>
             </div>
-            <div data-mdb-input-init className="form-outline mb-4">
+            <div className="form-outline mb-4">
               <label className="form-label" htmlFor="loginPassword">
                 Password
               </label>
@@ -34,20 +35,17 @@ const LogIn = () => {
                 className="form-control"
                 required
               />
+              {/* error Message */}
+              <p className="form-message mt-1"></p>
             </div>
 
-            <button
-              type="submit"
-              data-mdb-button-init
-              data-mdb-ripple-init
-              className="button mb-4 w-100 rounded"
-            >
-              Sign in
+            <button type="submit" className="button mb-4 w-100 rounded">
+              Sign In
             </button>
 
             <div className="text-center">
               <p>
-                Not a member? <Link to={'/register'}>Register</Link>
+                Not a member? <Link to={"/register"}>Sign Up</Link>
               </p>
             </div>
           </form>
@@ -57,4 +55,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignIn;

@@ -58,3 +58,7 @@ body {
   max-width: 500px;
   margin: auto;
 }
+
+.form-message{
+  color: #d10000;
+}
