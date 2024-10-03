@@ -39,7 +39,7 @@ const SignIn = () => {
               <p className="form-message mt-1"></p>
             </div>
 
-            <button type="submit" className="button mb-4 w-100 rounded">
+            <button type="submit" className="btn btn-primary mb-4 w-100 rounded">
               Sign In
             </button>
 

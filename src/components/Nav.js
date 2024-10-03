@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 
 const Nav = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary container-lg fw-bold">
       <div className="container-fluid">

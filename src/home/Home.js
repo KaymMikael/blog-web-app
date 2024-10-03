@@ -3,7 +3,7 @@ import Introduction from "../components/Introduction";
 import Posts from "../blog/Posts";
 
 const Home = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <section className="home">
       {!isAuthenticated ? <Introduction/> : <Posts/>}
