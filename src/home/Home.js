@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Introduction from "../components/Introduction";
-import Posts from "../post/Posts";
+import Posts from "../blog/Posts";
 
 const Home = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);

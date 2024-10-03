@@ -25,10 +25,10 @@ const Nav = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav flex-grow-1 justify-content-end">
-                <Link className="nav-link active headline" to={"/post"}>
-                  Create Blog
+                <Link className="nav-link active headline" to={"/new-blog"}>
+                  New Blog
                 </Link>
-                <Link className="nav-link headline" to={"/my-post"}>
+                <Link className="nav-link headline" to={"/my-blogs"}>
                   My Blogs
                 </Link>
                 <div className="dropdown">

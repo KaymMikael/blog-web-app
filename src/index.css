@@ -26,25 +26,6 @@ body {
   color: #272343;
 }
 
-/* Button style */
-.button {
-  color: #272343;
-  background-color: #ffd803;
-  padding: 6px 12px;
-  border: none;
-  transition: opacity ease 0.25s;
-  cursor: pointer;
-}
-
-.button-outlined {
-  border: 1px solid #272343;
-  background-color: #fffffe;
-}
-
-.button:hover {
-  opacity: 0.6;
-}
-
 /* Nav link */
 .nav-link {
   transition: opacity ease 0.25s;

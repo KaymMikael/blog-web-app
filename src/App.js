@@ -4,6 +4,8 @@ import Home from "./home/Home";
 import NotFound from "./NotFound";
 import SignUp from "./signup/SignUp";
 import SignIn from "./login/SignIn";
+import NewBlog from "./blog/NewBlog";
+import MyBlogs from "./blog/MyBlogs";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path={"/"} element={<Home />} />
           <Route path={"/login"} element={<SignIn />} />
           <Route path={"/register"} element={<SignUp />} />
+          <Route path={"/new-blog"} element={<NewBlog />} />
+          <Route path={"/my-blogs"} element={<MyBlogs />} />
           <Route path={"*"} element={<NotFound />} />
         </Routes>
       </main>

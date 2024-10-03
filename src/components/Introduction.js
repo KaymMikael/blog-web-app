@@ -1,7 +1,7 @@
 import React from "react";
-import { FaInstagram, FaXTwitter, FaFacebook } from "react-icons/fa6";
 import HomeIllustration from "../assets/images/HomeIllustration.jpg";
 import { Link } from "react-router-dom";
+import Socials from "./Socials";
 
 const Introduction = () => {
   return (
@@ -30,45 +30,20 @@ const Introduction = () => {
         >
           <Link
             to={"/about"}
-            className="button button-outlined me-2 rounded"
+            className="btn btn-outline-primary me-2 rounded btn-md"
             style={{ textDecoration: "none" }}
           >
             Learn More
           </Link>
           <Link
             to={"/login"}
-            className="button rounded btn-lg"
+            className="btn btn-primary rounded btn-md"
             style={{ textDecoration: "none" }}
           >
             Log In
           </Link>
         </div>
-        <div className="socials mt-5 fs-4 d-flex gap-3">
-          <Link
-            className="nav-link"
-            to={"https://www.facebook.com"}
-            target="_blank"
-            style={{ textDecoration: "none", color: "#272343" }}
-          >
-            <FaFacebook />
-          </Link>
-          <Link
-            className="nav-link"
-            to={"https://www.x.com"}
-            target="_blank"
-            style={{ textDecoration: "none", color: "#272343" }}
-          >
-            <FaXTwitter />
-          </Link>
-          <Link
-            className="nav-link"
-            to={"https://www.instagram.com"}
-            target="_blank"
-            style={{ textDecoration: "none", color: "#272343" }}
-          >
-            <FaInstagram />
-          </Link>
-        </div>
+        <Socials />
       </div>
       <div className="col-12 col-sm-6 d-flex justify-content-end">
         <img
