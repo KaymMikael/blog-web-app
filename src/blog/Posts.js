@@ -25,8 +25,8 @@ const Posts = () => {
             Search
           </button>
         </form>
-        {/* Posts */}
-        {blogs ? (
+        {/* Blogs */}
+        {blogs.length ? (
           blogs.map((blog) => <PostItem key={blog.id} blog={blog} />)
         ) : (
           <p>No blog for today</p>

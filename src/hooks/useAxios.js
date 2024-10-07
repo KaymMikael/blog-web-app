@@ -8,8 +8,10 @@ const useAxiosFetch = (dataUrl) => {
     const fetchData = async (url) => {
       try {
         const response = await axios.get(url);
-        setData(response.data.reverse()); //reverse the result to display the recently blogs
-      } catch (e) {}
+        setData(response.data);
+      } catch (e) {
+        console.log(e.message);
+      }
     };
     fetchData(dataUrl);
   }, []);

@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
       const result = await axiosHelper.get("/users/auth");
       if (result.data.status === "success") {
         setIsAuthenticated(true);
-        setUser(result.data.user);
+        setUser(result.data.user.user);
       } else {
         setIsAuthenticated(false);
       }
