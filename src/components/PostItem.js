@@ -10,7 +10,7 @@ const PostItem = ({ blog }) => {
   const [author, setAuthor] = useState("");
   const [isLiked, setIsLiked] = useState(null);
   const { user } = useContext(UserContext);
-  const { userLikes, setUserLikes, reactions } = useContext(BlogContext);
+  const { userLikes, setUserLikes } = useContext(BlogContext);
   const [totalLikes, setTotalLikes] = useState(0);
 
   //Get the author of the blog
