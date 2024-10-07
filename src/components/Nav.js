@@ -1,9 +1,23 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import UserContext from "../context/UserContext";
+import axiosHelper from "../axios/axiosHelper";
 
 const Nav = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await axiosHelper.get("/users/logout");
+      setUser("");
+      window.location.reload(true);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary container-lg fw-bold">
       <div className="container-fluid">
@@ -32,15 +46,13 @@ const Nav = () => {
                   My Blogs
                 </Link>
                 <div className="dropdown">
-                  <a
+                  <button
                     className="btn btn-primary dropdown-toggle"
-                    href="#"
-                    role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     <FaUser />
-                  </a>
+                  </button>
                   <ul className="dropdown-menu">
                     <li>
                       <Link className="dropdown-item" to={"/"}>
@@ -48,9 +60,9 @@ const Nav = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to={"/"}>
+                      <button className="dropdown-item" onClick={handleLogOut}>
                         Log out
-                      </Link>
+                      </button>
                     </li>
                   </ul>
                 </div>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import PostItem from "../components/PostItem";
 import PageHeader from "../components/PageHeader";
+import BlogContext from "../context/BlogContext";
 
 const Posts = () => {
+  const { blogs } = useContext(BlogContext);
   return (
     <section className="posts">
       <PageHeader text={"Blogs"} />
@@ -24,8 +26,11 @@ const Posts = () => {
           </button>
         </form>
         {/* Posts */}
-        <PostItem />
-        <PostItem />
+        {blogs ? (
+          blogs.map((blog) => <PostItem key={blog.id} blog={blog} />)
+        ) : (
+          <p>No blog for today</p>
+        )}
       </div>
     </section>
   );
