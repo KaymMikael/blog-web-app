@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axiosHelper from "../axios/axiosHelper";
 
 const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
@@ -7,7 +7,7 @@ const useAxiosFetch = (dataUrl) => {
   useEffect(() => {
     const fetchData = async (url) => {
       try {
-        const response = await axios.get(url);
+        const response = await axiosHelper.get(url);
         setData(response.data);
       } catch (e) {
         console.log(e.message);

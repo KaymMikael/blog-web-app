@@ -4,10 +4,8 @@ import useAxiosFetch from "../hooks/useAxios";
 const BlogContext = createContext({});
 
 export const BlogProvider = ({ children }) => {
-  const { data: blogData } = useAxiosFetch("http://localhost:3001/blogs");
-  const { data: reactionsData } = useAxiosFetch(
-    "http://localhost:3001/blogs/reactions"
-  );
+  const { data: blogData } = useAxiosFetch("/blogs");
+  const { data: reactionsData } = useAxiosFetch("/blogs/reactions");
   const [blogs, setBlogs] = useState([]);
   const [reactions, setReactions] = useState([]);
   const [userLikes, setUserLikes] = useState([]);
