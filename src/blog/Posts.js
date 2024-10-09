@@ -33,7 +33,7 @@ const Posts = () => {
           <input
             className="form-control"
             type="search"
-            placeholder="Search by Title or Author"
+            placeholder="Search by Title"
             aria-label="Search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}

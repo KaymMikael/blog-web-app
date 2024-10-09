@@ -24,7 +24,6 @@ const NewBlog = () => {
         totalLikes: 0,
         date: getTimeStamp(new Date()),
       };
-      console.log(newBlog);
       const result = await axiosHelper.post("/blogs/create", newBlog);
       // returns the full blog with its new ID
       const createdBlog = { ...newBlog, id: result.data.id };
@@ -87,7 +86,7 @@ const NewBlog = () => {
               id="blogContent"
               className="form-control"
               required
-              minLength={8}
+              minLength={25}
               style={{ height: "150px" }}
               value={content}
               onChange={(e) => setContent(e.target.value)}

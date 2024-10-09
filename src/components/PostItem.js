@@ -64,7 +64,7 @@ const PostItem = ({ blog }) => {
         setIsLiked(false);
         const updatedLikes = totalLikes - 1;
         setTotalLikes(updatedLikes);
-        await axiosHelper.delete(`/blogs/reactions/${blog.id}`);
+        await axiosHelper.delete(`/blogs/reactions/${blog.id}/${user.id}`);
         await axiosHelper.patch(`/blogs/${blog.id}/unlike`);
         const newUserLikes = userLikes.filter(
           (likes) => likes.blogId !== blog.id

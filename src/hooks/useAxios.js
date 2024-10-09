@@ -4,7 +4,7 @@ import UserContext from "../context/UserContext";
 
 const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
-  const { isAuthenticated, user } = useContext(UserContext);
+  const { isAuthenticated } = useContext(UserContext);
 
   useEffect(() => {
     const fetchData = async (url) => {

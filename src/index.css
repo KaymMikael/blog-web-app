@@ -17,6 +17,10 @@ body {
   background-color: #fffffe;
 }
 
+.box-shadow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 /* Typography Styles */
 .secondary {
   color: #e3f6f5;

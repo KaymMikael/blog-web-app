@@ -5,7 +5,6 @@ const BlogContext = createContext({});
 
 export const BlogProvider = ({ children }) => {
   const { data: blogData } = useAxiosFetch("/blogs");
-  const { data: reactionsData } = useAxiosFetch("/blogs/reactions");
   const [blogs, setBlogs] = useState([]);
   const [reactions, setReactions] = useState([]);
   const [userLikes, setUserLikes] = useState([]);
@@ -13,10 +12,8 @@ export const BlogProvider = ({ children }) => {
   useEffect(() => {
     if (blogData.length) {
       setBlogs(blogData.reverse());
-      console.log(reactionsData);
-      setReactions(reactionsData);
     }
-  }, [blogData,reactionsData]);
+  }, [blogData]);
 
   return (
     <BlogContext.Provider

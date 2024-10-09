@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BlogContext from "../context/BlogContext";
 import axiosHelper from "../axios/axiosHelper";
+import PageHeader from "../components/PageHeader";
+import { formatBlogDate } from "../utils/date";
+import PostLikesList from "../components/PostLikesList";
 
 const BlogPage = () => {
   const { blogs } = useContext(BlogContext);
@@ -28,8 +31,23 @@ const BlogPage = () => {
 
   return (
     <section className="blog-page">
-      <h1>Blog Page</h1>
-      <p>{JSON.stringify(blog)}</p>
+      <PageHeader text={blog.title} />
+      <div className="row row-gap-3">
+        <div className="col-12 col-md-6">
+          <div className="box-shadow rounded p-2">
+            <p className="text-secondary text-center">
+              {formatBlogDate(blog.date)}
+            </p>
+            <p>{blog.content}</p>
+          </div>
+        </div>
+        <div className="col-12 col-md-6">
+          <div className="box-shadow rounded p-2">
+            <p className="text-secondary text-center">Who Likes The Post</p>
+            <PostLikesList />
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
