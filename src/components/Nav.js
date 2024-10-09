@@ -60,7 +60,7 @@ const Nav = () => {
                   </button>
                   <ul className="dropdown-menu">
                     <li>
-                      <Link className="dropdown-item" to={"/"}>
+                      <Link className="dropdown-item" to={"/profile"}>
                         Profile
                       </Link>
                     </li>
