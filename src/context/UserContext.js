@@ -18,14 +18,16 @@ export const UserProvider = ({ children }) => {
         setIsAuthenticated(false);
       }
     } catch (error) {
-      console.log(error.response.data.error);
+      if (error.response) {
+        console.error(error.response);
+        return;
+      }
+      console.log(error.message);
     }
   };
 
   return (
-    <UserContext.Provider
-      value={{ user, setUser, isAuthenticated, checkUser }}
-    >
+    <UserContext.Provider value={{ user, setUser, isAuthenticated, checkUser }}>
       {children}
     </UserContext.Provider>
   );

@@ -1,12 +1,11 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import UserContext from "../context/UserContext";
 import axiosHelper from "../axios/axiosHelper";
 
 const Nav = () => {
   const { isAuthenticated, setUser } = useContext(UserContext);
-  const navigate = useNavigate();
 
   const handleLogOut = async () => {
     try {
@@ -21,7 +20,10 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary container-lg fw-bold">
       <div className="container-fluid">
-        <Link className="navbar-brand" to={"/"}>
+        <Link
+          className="navbar-brand"
+          to={isAuthenticated ? "/dashboard" : "/"}
+        >
           PostWave
         </Link>
         {isAuthenticated && (
@@ -39,6 +41,9 @@ const Nav = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav flex-grow-1 justify-content-end">
+                <Link className="nav-link active headline" to={"/dashboard"}>
+                  Blogs
+                </Link>
                 <Link className="nav-link active headline" to={"/new-blog"}>
                   New Blog
                 </Link>

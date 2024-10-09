@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axiosHelper from "../axios/axiosHelper";
+import UserContext from "../context/UserContext";
 
 const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
+  const { isAuthenticated, user } = useContext(UserContext);
 
   useEffect(() => {
     const fetchData = async (url) => {
@@ -13,8 +15,10 @@ const useAxiosFetch = (dataUrl) => {
         console.log(e.message);
       }
     };
-    fetchData(dataUrl);
-  }, []);
+    if (isAuthenticated) {
+      fetchData(dataUrl);
+    }
+  }, [user]);
   return { data };
 };
 

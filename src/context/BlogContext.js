@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useAxiosFetch from "../hooks/useAxios";
 
 const BlogContext = createContext({});
@@ -11,8 +11,11 @@ export const BlogProvider = ({ children }) => {
   const [userLikes, setUserLikes] = useState([]);
 
   useEffect(() => {
-    setBlogs(blogData.reverse());
-    setReactions(reactionsData);
+    if (blogData.length) {
+      console.log(blogData.length);
+      setBlogs(blogData.reverse());
+      setReactions(reactionsData);
+    }
   }, [blogData]);
 
   return (

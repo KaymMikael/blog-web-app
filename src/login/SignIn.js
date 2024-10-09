@@ -20,7 +20,7 @@ const SignIn = () => {
       setEmail("");
       setPassword("");
       //navigate to home page after signing up
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       if (error.response && error.response.data) {
         setMessage(error.response.data.error); // Access error message from the backend

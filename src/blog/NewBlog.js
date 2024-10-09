@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import UserContext from "../context/UserContext";
 import axiosHelper from "../axios/axiosHelper";
@@ -8,36 +7,30 @@ import { getTimeStamp } from "../utils/date";
 
 const NewBlog = () => {
   const { setBlogs } = useContext(BlogContext);
-  const { isAuthenticated, user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
   const [fade, setFade] = useState(false);
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newBlog = {
-        userId: user.user.id,
+        userId: user.id,
         title,
         content,
         totalLikes: 0,
         date: getTimeStamp(new Date()),
       };
+      console.log(newBlog);
       const result = await axiosHelper.post("/blogs/create", newBlog);
       // returns the full blog with its new ID
       const createdBlog = { ...newBlog, id: result.data.id };
       // Update the blogs context with the new blog
       setBlogs((prevBlogs) => [createdBlog, ...prevBlogs]);
-      
+
       setMessage(result.data.message);
       setMessageType("success");
       setFade(false);
