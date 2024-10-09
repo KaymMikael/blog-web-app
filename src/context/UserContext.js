@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
 
   const checkUser = async () => {
     try {
+      console.log('check user called')
       const result = await axiosHelper.get("/users/auth");
       if (result.data.status === "success") {
         setIsAuthenticated(true);
@@ -27,7 +28,9 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, isAuthenticated, checkUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, isAuthenticated, checkUser }}
+    >
       {children}
     </UserContext.Provider>
   );

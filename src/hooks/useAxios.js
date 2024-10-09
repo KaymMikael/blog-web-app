@@ -18,7 +18,7 @@ const useAxiosFetch = (dataUrl) => {
     if (isAuthenticated) {
       fetchData(dataUrl);
     }
-  }, [user]);
+  }, [isAuthenticated]);
   return { data };
 };
 

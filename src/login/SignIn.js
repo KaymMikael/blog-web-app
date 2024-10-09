@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosHelper from "../axios/axiosHelper";
+import UserContext from "../context/UserContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -9,13 +10,15 @@ const SignIn = () => {
   const [messageType, setMessageType] = useState("");
   const [fade, setFade] = useState(false);
   const navigate = useNavigate("");
+  const { checkUser } = useContext(UserContext);
   axiosHelper.defaults.withCredentials = true;
-  
+
   const handleLogIn = async (e) => {
     e.preventDefault();
     try {
       const user = { email, password };
       await axiosHelper.post("/users/login", user);
+      await checkUser();
       //Reset inputs
       setEmail("");
       setPassword("");

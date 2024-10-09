@@ -26,8 +26,22 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path={"/login"} element={<SignIn />} />
-            <Route path={"/register"} element={<SignUp />} />
+            <Route
+              path={"/login"}
+              element={
+                <PrivateRoute>
+                  <SignIn />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={"/register"}
+              element={
+                <PrivateRoute>
+                  <SignUp />
+                </PrivateRoute>
+              }
+            />
             <Route
               path={"/new-blog"}
               element={
