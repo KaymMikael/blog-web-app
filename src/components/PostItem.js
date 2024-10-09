@@ -10,7 +10,7 @@ const PostItem = ({ blog }) => {
   const [author, setAuthor] = useState("");
   const [isLiked, setIsLiked] = useState(null);
   const { user } = useContext(UserContext);
-  const { userLikes, setUserLikes } = useContext(BlogContext);
+  const { userLikes, setUserLikes, setBlogs } = useContext(BlogContext);
   const [totalLikes, setTotalLikes] = useState(0);
 
   //Get the author of the blog
@@ -47,37 +47,42 @@ const PostItem = ({ blog }) => {
       }
     };
     fetchUserLikes();
-  }, []);
+  }, [isLiked]);
+
+  // Update total likes in the blogs context
+  const updateBlogLikes = (blogId, newTotalLikes) => {
+    setBlogs((prevBlogs) =>
+      prevBlogs.map((b) =>
+        b.id === blogId ? { ...b, totalLikes: newTotalLikes } : b
+      )
+    );
+  };
 
   const handleLike = async () => {
     try {
       if (isLiked) {
-        // Optimistically update UI before API response
         setIsLiked(false);
-        setTotalLikes((prev) => prev - 1);
-
-        // Call API to delete the reaction and update blog's likes
+        const updatedLikes = totalLikes - 1;
+        setTotalLikes(updatedLikes);
         await axiosHelper.delete(`/blogs/reactions/${blog.id}`);
         await axiosHelper.patch(`/blogs/${blog.id}/unlike`);
-
-        // Remove like from userLikes
         const newUserLikes = userLikes.filter(
           (likes) => likes.blogId !== blog.id
         );
         setUserLikes(newUserLikes);
+        updateBlogLikes(blog.id, updatedLikes); // Update context
       } else {
-        // Optimistically update UI before API response
         setIsLiked(true);
-        setTotalLikes((prev) => prev + 1);
-
-        // Call API to add a reaction and update blog's likes
+        const updatedLikes = totalLikes + 1;
+        setTotalLikes(updatedLikes);
         const newData = { userId: user.id, blogId: blog.id };
         const result = await axiosHelper.post("/blogs/reactions", newData);
         await axiosHelper.patch(`/blogs/${blog.id}/like`);
-
-        // Add like to userLikes
-        const newLike = { ...newData, id: result.data.result.insertId };
-        setUserLikes((prev) => [...prev, newLike]);
+        setUserLikes((prev) => [
+          ...prev,
+          { ...newData, id: result.data.result.insertId },
+        ]);
+        updateBlogLikes(blog.id, updatedLikes); // Update context
       }
     } catch (e) {
       console.log(e.response);
@@ -107,7 +112,7 @@ const PostItem = ({ blog }) => {
             />
             <span className="ms-1">{totalLikes}</span>
           </div>
-          <Link to={"/post/:id"} style={{ textDecoration: "none" }}>
+          <Link to={`/blog/${blog.id}`} style={{ textDecoration: "none" }}>
             Visit
           </Link>
         </div>

@@ -9,6 +9,7 @@ import MyBlogs from "./blog/MyBlogs";
 import { PrivateRoute } from "./PrivateRoute";
 import Posts from "./blog/Posts";
 import { Provider } from "./Provider";
+import BlogPage from "./blog/BlogPage";
 
 function App() {
   return (
@@ -55,6 +56,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <MyBlogs />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={"/blog/:id"}
+              element={
+                <PrivateRoute>
+                  <BlogPage />
                 </PrivateRoute>
               }
             />
