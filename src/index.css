@@ -17,7 +17,7 @@ body {
   background-color: #fffffe;
 }
 
-.box-shadow{
+.box-shadow {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -45,7 +45,8 @@ body {
 }
 
 /* Post style */
-.posts{
+.posts,
+.my-blogs {
   margin-bottom: 18px;
 }
 
@@ -60,8 +61,13 @@ body {
   text-transform: capitalize;
 }
 
-.heart-reaction {
+.heart-reaction,
+.trash-icon {
   cursor: pointer;
+}
+
+.trash-icon:hover {
+  color: red;
 }
 
 /* message style */

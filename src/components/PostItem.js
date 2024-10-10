@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaHeart, FaTrashAlt } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 import axiosHelper from "../axios/axiosHelper";
 import { formatBlogDate } from "../utils/date";
 import BlogContext from "../context/BlogContext";
@@ -10,8 +10,9 @@ const PostItem = ({ blog }) => {
   const [author, setAuthor] = useState("");
   const [isLiked, setIsLiked] = useState(null);
   const { user } = useContext(UserContext);
-  const { userLikes, setUserLikes, setBlogs } = useContext(BlogContext);
+  const { userLikes, setUserLikes, setBlogs, blogs } = useContext(BlogContext);
   const [totalLikes, setTotalLikes] = useState(0);
+  const location = useLocation();
 
   //Get the author of the blog
   useEffect(() => {
@@ -89,6 +90,21 @@ const PostItem = ({ blog }) => {
     }
   };
 
+  const handleDelete = async (blogId) => {
+    try {
+      const result = await axiosHelper.delete(`/blogs/delete/${blogId}`);
+      console.log(result.data.message);
+      const newBlogs = blogs.filter((blog) => blog.id !== blogId);
+      setBlogs(newBlogs);
+    } catch (e) {
+      if (e.response) {
+        console.log(e.response);
+        return;
+      }
+      console.log(e);
+    }
+  };
+
   return (
     <div className="post-item p-3">
       <div className="post-header d-flex justify-content-between align-items-baseline">
@@ -102,7 +118,7 @@ const PostItem = ({ blog }) => {
             : blog.content}
         </p>
         <p className="post-author text-secondary fst-italic">- {author}</p>
-        <div className="post-links d-flex justify-content-between">
+        <div className="post-links d-flex justify-content-between align-items-center">
           <div className="reactions">
             <FaHeart
               className="heart-reaction"
@@ -115,6 +131,13 @@ const PostItem = ({ blog }) => {
           <Link to={`/blog/${blog.id}`} style={{ textDecoration: "none" }}>
             Visit
           </Link>
+          {location.pathname === "/my-blogs" && (
+            <FaTrashAlt
+              className="trash-icon"
+              role="button"
+              onClick={() => handleDelete(blog.id)}
+            />
+          )}
         </div>
       </div>
     </div>
