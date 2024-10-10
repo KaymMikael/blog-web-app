@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosHelper = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://blog-web-app-api.onrender.com",
 });
 
 export default axiosHelper;
