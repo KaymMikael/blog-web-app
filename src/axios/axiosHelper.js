@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosHelper = axios.create({
-  baseURL: "https://blog-web-app-api.onrender.com",
+  baseURL: process.env.REACT_APP_API,
 });
 
 export default axiosHelper;
